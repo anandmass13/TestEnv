@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Ant Example" default="all1" basedir=".">
+<project name="Ant Example" default="git-pull" basedir=".">
 	<property name="project_name" value="Selenium_Test" />
 	<property name="src" location="src" />
 	<property name="build" location="build/classes" />
@@ -28,7 +28,26 @@
 		<delete dir="${reports}" />
 	</target>
 
+<macrodef name = "git">
+    <attribute name = "command" />
+    <!--<attribute name = "options" default=""/>-->
+    <attribute name = "dir" default = "" />
+    <element name = "args" optional = "true" />
+    <sequential>
+      <echo message = "git @{command}" />
+      <exec executable = "git" dir = "@{dir}">
+        <arg value = "@{command}" />
+        <!--<arg value = "@{options}" />-->
+        <args/>
+      </exec>
+    </sequential>
+  </macrodef>
 
+  <target name="git-pull" description="Pull the current git branch">
+    <git command="pull" dir="." />
+  </target>
+
+  <target name="update" depends="git-pull" />
 
 	<target name="run-tests" depends="compile">
 		<property name="testparam" value="RunSalesForceTestSuite" />
