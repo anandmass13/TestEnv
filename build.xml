@@ -44,7 +44,7 @@
   </macrodef>
 
   <target name="git-pull" description="Pull the current git branch">
-    <git command="pull" dir="." />
+    <git command="pull" />
   </target>
 
   <target name="update" depends="git-pull" />
