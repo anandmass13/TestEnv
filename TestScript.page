@@ -1,0 +1,31 @@
+<apex:page standardController="Test_Script__c" extensions="TestScriptController" tabStyle="Test_Script__c"  showChat="true"   id="rEPage">
+    <apex:form id="dpForm">
+        <div class="bPageTitle">
+            <div class="ptBody">
+                <div class="content">
+                    <img src="/s.gif" alt="Test Script" class="pageTitleIcon" title="Test Script"/>
+                    <h1 class="pageType">Test Script<span class="titleSeparatingColon">:</span></h1>
+                    <h2 class="pageDescription"> New Test Script</h2>
+                    <div class="blank">&nbsp;</div>
+                </div>
+                <div class="links"></div>
+            </div>
+            <div class="ptBreadcrumb"></div>
+        </div>
+        <apex:pageBlock id="pb1" title="Test Script Edit" mode="maindetail"> 
+            <apex:pageBlockButtons id="pbbInforemove" >
+                <apex:commandButton id="btnEditButton" value="Save"  action="{!saveTestScript}" />
+                <apex:commandButton id="btnDeleteButton" value="Cancel"  action="{!cancelTestScript}" /> 
+            </apex:pageBlockButtons>                       
+            <apex:pageBlockSection title="Information" columns="2" collapsible="false" showHeader="true" >
+                
+                <apex:inputField value="{!objTestScript.Test_Information__c}"/>
+                <apex:inputField value="{!objTestScript.Script_Status__c}"/>
+                <apex:inputField value="{!objTestScript.Step__c}"/>
+                <apex:inputField value="{!objTestScript.Test_Data__c}"/>
+                <apex:inputField value="{!objTestScript.Test_Steps__c}"/>
+                <apex:inputField value="{!objTestScript.Expected_Result__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>   
+    </apex:form>
+</apex:page>
